@@ -34,7 +34,7 @@
                             <a href="{{ route('products', $uproduct) }}">{{ str($uproduct->name ?? '')->limit(30) }}</a>
                         </h4>
                         @if(!empty($uproduct->description))
-                        <p class="product-description">{{ str($uproduct->description)->limit(60) }}</p>
+                        <p class="product-description">{{ str($uproduct->description)->limit(80) }}</p>
                         @endif
 
                         <!-- Price -->

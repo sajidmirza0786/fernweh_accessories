@@ -70,7 +70,7 @@
                     <a href="{{ route('products', $product->category) }}" 
                        class="btn btn-light btn-sm text-dark border fs-6 mb-2">
                         <i class="fas fa-tags me-1"></i> {{-- FA5 icon --}}
-                        {{ $product->category->name }}
+                        {{ str($product->category?->name??'NA')->limit(35) }}
                     </a>
                 @else
                     <span class="text-muted">No Category Assigned</span>
