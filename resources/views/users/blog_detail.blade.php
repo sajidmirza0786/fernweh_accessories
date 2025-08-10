@@ -2,8 +2,8 @@
 
 @section('seo')
 <title>{{ $blog->title ?? 'Blog' }} | Fernweh Premium Accessories</title>
-<meta name="description" content="{{ $blog->description ?? '' }}">
-<meta name="author" content="{{ $blog->keywords ?? '' }}">
+<meta name="description" content="{{ $blog->description ?? 'Blog | Fernweh Preminum Accessories' }}">
+<meta name="author" content="{{ $blog->keywords ?? 'Blog | Fernweh Preminum Accessories' }}">
 @endsection
 
 @section('content')
