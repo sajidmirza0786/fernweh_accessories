@@ -52,35 +52,74 @@
     </div>
 
     <!-- Contact Form -->
-    <div class="mb-5">
-        <h4 class="mb-3 font-weight-bold">Send us a Message</h4>
-        <form action="{{ route('contact') }}" method="POST" class="p-4 border rounded-lg shadow-sm bg-white">
-            @csrf
-            <div class="form-row">
-                <div class="form-group col-md-4">
-                    <label class="small text-muted">Full Name</label>
-                    <input type="text" name="name" class="form-control" placeholder="John Doe" required>
-                </div>
-                <div class="form-group col-md-4">
-                    <label class="small text-muted">Mobile Number</label>
-                    <input type="text" name="phone" class="form-control" placeholder="+91-XXXXXXXXXX" required>
-                </div>
-                <div class="form-group col-md-4">
-                    <label class="small text-muted">Email Address</label>
-                    <input type="email" name="email" class="form-control" placeholder="you@example.com" required>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="small text-muted">Subject</label>
-                <input type="text" name="subject" class="form-control" placeholder="Subject" required>
-            </div>
-            <div class="form-group">
-                <label class="small text-muted">Your Message</label>
-                <textarea name="message" rows="5" class="form-control" placeholder="Type your message..." required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary px-4">Send Message</button>
-        </form>
-    </div>
+   <div class="mb-5">
+       <h4 class="mb-3 font-weight-bold">Send us a Message</h4>
+
+       @if(session('success'))
+           <div class="alert alert-success">
+               {{ session('success') }}
+           </div>
+       @endif
+
+       @if(session('error'))
+           <div class="alert alert-danger">
+               {{ session('error') }}
+           </div>
+       @endif
+
+       <form action="{{ route('ContactStore') }}" method="POST" class="p-4 border rounded-lg shadow-sm bg-white">
+           @csrf
+           <input type="hidden" name="page_url" value="{{ old('page_url', $product->slug ?? '') }}">
+
+           <div class="form-row">
+               <div class="form-group col-md-4">
+                   <label class="small text-muted">Full Name</label>
+                   <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" 
+                       placeholder="John Doe" value="{{ old('name') }}" required>
+                   @error('name')
+                       <small class="text-danger">{{ $message }}</small>
+                   @enderror
+               </div>
+               <div class="form-group col-md-4">
+                   <label class="small text-muted">Mobile Number</label>
+                   <input type="text" name="phone" class="form-control @error('phone') is-invalid @enderror" 
+                       placeholder="+91-XXXXXXXXXX" value="{{ old('phone') }}" required>
+                   @error('phone')
+                       <small class="text-danger">{{ $message }}</small>
+                   @enderror
+               </div>
+               <div class="form-group col-md-4">
+                   <label class="small text-muted">Email Address</label>
+                   <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" 
+                       placeholder="you@example.com" value="{{ old('email') }}" required>
+                   @error('email')
+                       <small class="text-danger">{{ $message }}</small>
+                   @enderror
+               </div>
+           </div>
+
+           <div class="form-group">
+               <label class="small text-muted">Subject</label>
+               <input type="text" name="subject" class="form-control @error('subject') is-invalid @enderror" 
+                   placeholder="Subject" value="{{ old('subject') }}" required>
+               @error('subject')
+                   <small class="text-danger">{{ $message }}</small>
+               @enderror
+           </div>
+
+           <div class="form-group">
+               <label class="small text-muted">Your Message</label>
+               <textarea name="message" rows="5" class="form-control @error('message') is-invalid @enderror" 
+                   placeholder="Type your message..." required>{{ old('message') }}</textarea>
+               @error('message')
+                   <small class="text-danger">{{ $message }}</small>
+               @enderror
+           </div>
+
+           <button type="submit" class="btn btn-primary px-4">Send Message</button>
+       </form>
+   </div>
+
 
     <!-- Google Map -->
     <div id="map">
@@ -88,4 +127,18 @@
    </div>
 
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('form[action="{{ route('ContactStore') }}"]');
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalBtnHtml = submitBtn.innerHTML;
+
+    form.addEventListener('submit', function() {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = `<span class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span> Sending...`;
+    });
+});
+</script>
+
 @endsection

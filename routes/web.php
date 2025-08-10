@@ -26,7 +26,7 @@ Route::middleware('auth')->group(function () {
 
 Route::controller(PageController::class)->group(function(){
     Route::get('{slug}', 'products')->name('products');
-    //Route::match(['get','post'], 'contact-us', 'contactUs')->name('contact');
+    Route::post('contact-store', 'ContactStore')->name('ContactStore');
     Route::get('blogs/list', 'blogs')->name('ourBlogs');
     Route::get('blogs/{blog}', 'blogsDetails')->name('blogsDetails');
 });

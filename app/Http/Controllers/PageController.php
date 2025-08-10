@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Enquiry;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class PageController extends Controller
 {
@@ -95,6 +98,54 @@ class PageController extends Controller
 
             // Show 500 error page
             abort(500, 'Something went wrong while loading the page.');
+        }
+    }
+
+    /**
+     * Store a new enquiry.
+     */
+    public function ContactStore(Request $request)
+    {
+        // Validation rules
+        $rules = [
+            'name'    => 'required|string|max:255',
+            'email'   => 'required|email|max:255',
+            'phone'   => 'required|string|max:20',
+            'subject' => 'nullable|string|max:255',
+            'page_url'=> 'nullable|max:255',
+            'message' => 'nullable|string',
+        ];
+
+        // Validate input
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                             ->withErrors($validator)
+                             ->withInput();
+        }
+
+        DB::beginTransaction();
+        try {
+            // Capture IP address
+            $ip = $request->ip();
+
+            Enquiry::create([
+                'name'     => $request->input('name'),
+                'email'    => $request->input('email'),
+                'phone'    => $request->input('phone'),
+                'subject'  => $request->input('subject'),
+                'page_url' => $request->input('page_url'),
+                'message'  => $request->input('message'),
+                'ip'       => $ip,
+            ]);
+
+            DB::commit();
+
+            return redirect()->back()->with('success', 'Thank you for your enquiry. We will get back to you soon!');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with('error', 'Oops! Something went wrong. Please try again later.'. $e->getMessage());
         }
     }
 

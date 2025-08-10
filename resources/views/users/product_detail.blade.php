@@ -90,24 +90,60 @@
                 <div class="mb-3">{{ $product->description }}</div>
             @endif
 
+            {{-- Success Message --}}
+            @if(session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+
+            @if(session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
+
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <strong>There were some problems with your input:</strong>
+                    <ul class="mb-0">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
             {{-- Enquiry Form --}}
-            <form action="{{ route('contact') }}" method="POST" class="enquiry-form">
+            <form action="{{ route('ContactStore') }}" method="POST" class="enquiry-form">
                 @csrf
-                <input type="hidden" name="product_id" value="{{ $product->id }}">
+                <input type="hidden" name="page_url" value="{{ $product->slug }}">
                 <input type="hidden" name="subject" value="Product Enquiry">
 
                 <div class="row g-2">
                     <div class="col-md-6 pt-2">
-                        <input type="text" name="name" class="form-control" placeholder="Full Name" value="{{ old('name') }}" required>
+                        <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="Full Name" value="{{ old('name') }}" required>
+                        @error('name')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="col-md-6 pt-2">
-                        <input type="text" name="phone" class="form-control" placeholder="Mobile Number" value="{{ old('phone') }}" required>
+                        <input type="text" name="phone" class="form-control @error('phone') is-invalid @enderror" placeholder="Mobile Number" value="{{ old('phone') }}" required>
+                        @error('phone')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="col-md-12 pt-2">
-                        <input type="email" name="email" class="form-control" placeholder="Email Address" value="{{ old('email') }}" required>
+                        <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email Address" value="{{ old('email') }}" required>
+                        @error('email')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="col-md-12 pt-2">
-                        <textarea name="message" rows="2" class="form-control" placeholder="Your Message" required>{{ old('message') }}</textarea>
+                        <textarea name="message" rows="2" class="form-control @error('message') is-invalid @enderror" placeholder="Your Message" required>{{ old('message') }}</textarea>
+                        @error('message')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
 
@@ -116,6 +152,7 @@
                     <a href="tel:+918506959914" class="btn btn-success btn-sm"><i class="fa fa-phone"></i> Call</a>
                 </div>
             </form>
+
 
 
         </div>
