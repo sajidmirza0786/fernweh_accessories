@@ -141,19 +141,17 @@
                             </td>
                             {{-- New columns for Colors and Sizes --}}
                             <td class="small">
-                                @if($product->colors)
-                                    @foreach(explode(',', $product->colors) as $color)
-                                        <span class="badge rounded-pill bg-secondary me-1">{{ trim($color) }}</span>
-                                    @endforeach
+                                @if($product->color)
+                                    <span class="badge rounded-pill bg-secondary me-1">{{ $product->color }}</span>
                                 @else
                                     <span class="text-muted">N/A</span>
                                 @endif
                             </td>
                             <td class="small">
-                                @if($product->sizes)
-                                    @foreach(explode(',', $product->sizes) as $size)
-                                        <span class="badge rounded-pill bg-light text-dark border me-1">{{ trim($size) }}</span>
-                                    @endforeach
+                                @if($product->size)
+                                    <span class="badge rounded-pill bg-light text-dark border me-1">
+                                        {{ $product->size }}
+                                    </span>
                                 @else
                                     <span class="text-muted">N/A</span>
                                 @endif
