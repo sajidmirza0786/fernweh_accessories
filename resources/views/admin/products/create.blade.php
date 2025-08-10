@@ -137,12 +137,12 @@
                                     Color (optional)
                                 </label>
                                 <input type="text"
-                                       name="colors"
-                                       id="colors"
-                                       class="form-control @error('colors') is-invalid @enderror"
-                                       value="{{ old('colors', $product->colors ?? '') }}"
+                                       name="color"
+                                       id="color"
+                                       class="form-control @error('color') is-invalid @enderror"
+                                       value="{{ old('color', $product->color ?? '') }}"
                                        placeholder="e.g., Red, Blue, Black">
-                                @error('colors')
+                                @error('color')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
@@ -152,12 +152,12 @@
                                     Size (optional)
                                 </label>
                                 <input type="text"
-                                       name="sizes"
-                                       id="sizes"
-                                       class="form-control @error('sizes') is-invalid @enderror"
-                                       value="{{ old('sizes', $product->sizes ?? '') }}"
+                                       name="size"
+                                       id="size"
+                                       class="form-control @error('size') is-invalid @enderror"
+                                       value="{{ old('size', $product->size ?? '') }}"
                                        placeholder="e.g., S, M, L, XL">
-                                @error('sizes')
+                                @error('size')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
