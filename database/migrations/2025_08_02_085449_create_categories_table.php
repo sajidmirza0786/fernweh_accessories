@@ -1,0 +1,40 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('categories', function (Blueprint $table) {
+            $table->id();
+            
+            // Corrected foreign key with proper data type and constraint
+            $table->foreignId('parent_id')->nullable()->constrained('categories')->onDelete('cascade');
+            
+            // Added unique constraints for name and slug for better data integrity
+            $table->string('name')->unique();
+            $table->string('slug')->unique();
+            
+            $table->string('keyword')->nullable();
+            $table->string('description')->nullable();
+            $table->string('image')->nullable();
+            $table->string('status')->default('Active');
+            
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('categories');
+    }
+};
