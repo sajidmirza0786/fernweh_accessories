@@ -171,10 +171,7 @@ class ProductsController extends Controller
             return redirect()->route('admin.products.index')->with('success', 'Product updated successfully.');
         } catch (\Exception $e) {
             DB::rollBack();
-            if (isset($newImagePath)) {
-                Storage::disk('public')->delete($newImagePath);
-            }
-            return redirect()->back()->withInput()->with('error', 'Failed to update product. Please try again.');
+            return redirect()->back()->withInput()->with('error', 'Failed to update product. Please try again.'. $e->getMessage());
         }
     }
 
