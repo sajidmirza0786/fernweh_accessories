@@ -12,7 +12,7 @@
             @endphp
 
             @foreach($uProducts ?? [] as $uproduct)
-            <div class="col-lg-4 col-md-6 col-6 mb-4">
+            <div class="col-lg-4 col-md-6 col-6 mb-4 p-1">
                 <div class="product-card h-100">
                     
                     <!-- Product Image -->
