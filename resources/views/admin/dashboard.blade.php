@@ -150,7 +150,8 @@
                             <thead>
                                 <tr>
                                     <th class="small text-muted">Name</th>
-                                    <th class="small text-muted">Email</th>
+                                    <th class="small text-muted">Mobile</th>
+                                    <th class="small text-muted">Subject</th>
                                     <th class="small text-muted">Received</th>
                                 </tr>
                             </thead>
@@ -158,7 +159,8 @@
                                 @forelse($recentEnquiries as $enquiry)
                                     <tr>
                                         <td class="small">{{ $enquiry->name }}</td>
-                                        <td class="small">{{ $enquiry->email }}</td>
+                                        <td class="small">{{ $enquiry->phone ?? 'NA' }}</td>
+                                        <td class="small">{{ str($enquiry->subject)->limit(25) ?? 'NA' }}</td>
                                         <td class="small">{{ $enquiry->created_at->diffForHumans() }}</td>
                                     </tr>
                                 @empty
