@@ -62,7 +62,7 @@
 
 
 @include('users.partials.latest_product')
-<div class="testimonials pb-2 pt-4">
+<div class="testimonials pb-2 pt-4 bg-white">
    <div class="container">
       <div class="row">
          <div class="col-md-12">
@@ -73,7 +73,7 @@
          </div>
          <div class="col-md-12">
             <div class="owl-testimonials owl-carousel">
-               <div class="testimonial-item">
+               <div class="testimonial-item bg-light">
                   <div class="inner-content">
                      <h4>Vivek Bindra</h4>
                      <span>Delhi</span>
@@ -82,9 +82,9 @@
                         must-have for those who appreciate fine craftsmanship."
                      </p>
                   </div>
-                  <img src="assets/images/boy.png" alt="">
+                  <img src="{{ url('users/images/user.jpg') }}" alt="">
                </div>
-               <div class="testimonial-item">
+               <div class="testimonial-item bg-light">
                   <div class="inner-content">
                      <h4>Ajay Singh</h4>
                      <span>Tamilnadu</span>
@@ -93,9 +93,9 @@
                         cater to diverse tastes while maintaining their signature quality and charm."
                      </p>
                   </div>
-                  <img src="assets/images/boy.png" alt="">
+                  <img src="{{ url('users/images/user.jpg') }}" alt="">
                </div>
-               <div class="testimonial-item">
+               <div class="testimonial-item bg-light">
                   <div class="inner-content">
                      <h4>Neha Maurya</h4>
                      <span>Gujrat</span>
@@ -106,7 +106,7 @@
                   </div>
                   <img src="assets/images/woman.png" alt="">
                </div>
-               <div class="testimonial-item">
+               <div class="testimonial-item bg-light">
                   <div class="inner-content">
                      <h4>Chetan Gaur</h4>
                      <span>Utter Pardesh</span>
@@ -115,7 +115,7 @@
                         speaks volumes about refined taste and lasting durability."
                      </p>
                   </div>
-                  <img src="assets/images/boy.png" alt="">
+                  <img src="{{ url('users/images/user.jpg') }}" alt="">
                </div>
             </div>
          </div>
