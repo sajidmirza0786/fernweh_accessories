@@ -31,7 +31,7 @@
                     <div class="product-content">
                         <div class="product-category">{{ str($uproduct->category->name)->limit(25) ?? 'Premium Accessories' }}</div>
                         <h4 class="product-title">
-                            <a href="{{ route('products', $uproduct) }}">{{ str($uproduct->name ?? '')->limit(25) }}</a>
+                            <a href="{{ route('products', $uproduct) }}">{{ str($uproduct->name ?? '')->limit(30) }}</a>
                         </h4>
                         @if(!empty($uproduct->description))
                         <p class="product-description">{{ str($uproduct->description)->limit(60) }}</p>

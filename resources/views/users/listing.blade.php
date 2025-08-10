@@ -54,7 +54,7 @@
             <div class="row">
                 @if($products->count() > 0)
                     @foreach($products as $product)
-                        <div class="col-xl-3 col-lg-4 col-md-6 col-6 mb-4">
+                        <div class="col-xl-3 col-lg-4 col-md-6 col-6 mb-4 p-2">
                             <div class="card product-card border-0 shadow-sm h-100">
                                 <a href="{{ route('products', $product) }}" class="d-block">
                                     <img src="{{ \Storage::url($product->image ?? '') }}" 
