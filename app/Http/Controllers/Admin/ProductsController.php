@@ -157,7 +157,7 @@ class ProductsController extends Controller
 
             if ($request->hasFile('image')) {
                 if ($product->image && Storage::disk('public')->exists($product->image)) {
-                    Storage::disk('public')->delete($oldImagePath);
+                    Storage::disk('public')->delete($product->image);
                 }
 
                 $path = $this->image($request->file('image'), 'products', 800, 800);
