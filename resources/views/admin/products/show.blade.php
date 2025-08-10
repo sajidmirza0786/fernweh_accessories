@@ -22,7 +22,7 @@
                     <p class="text-muted mb-0 small">View complete product information</p>
                 </div>
                 <div>
-                    <a href="{{ route('admin.products.edit', $product->id) }}" class="btn btn-warning btn-sm me-2">
+                    <a href="{{ route('admin.products.edit', $product) }}" class="btn btn-warning btn-sm me-2">
                         <i class='bx bx-edit me-1'></i>
                         Edit Product
                     </a>
@@ -241,7 +241,7 @@
             </div>
 
             <div class="d-flex justify-content-end gap-2 mt-4">
-                <form method="POST" action="{{ route('admin.products.destroy', $product->id) }}" 
+                <form method="POST" action="{{ route('admin.products.destroy', $product) }}" 
                         class="d-inline" onsubmit="return confirm('Are you sure you want to delete this product? This action cannot be undone.')">
                     @csrf
                     @method('DELETE')
@@ -250,7 +250,7 @@
                         Delete Product
                     </button>
                 </form>
-                <a href="{{ route('admin.products.edit', $product->id) }}" class="btn btn-warning">
+                <a href="{{ route('admin.products.edit', $product) }}" class="btn btn-warning">
                     <i class='bx bx-edit me-1'></i>
                     Edit Product
                 </a>

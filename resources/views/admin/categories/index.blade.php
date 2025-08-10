@@ -123,11 +123,11 @@
                             </td>
                             <td class="text-center">
                                 <div class="btn-group btn-group-sm">
-                                    <a href="{{ route('admin.categories.edit', $category->id) }}"
+                                    <a href="{{ route('admin.categories.edit', $category) }}"
                                        class="btn btn-outline-warning btn-sm" title="Edit">
                                         <i class='bx bx-edit'></i>
                                     </a>
-                                    <form method="POST" action="{{ route('admin.categories.destroy', $category->id) }}"
+                                    <form method="POST" action="{{ route('admin.categories.destroy', $category) }}"
                                           class="d-inline" onsubmit="return confirm('Delete this category?')">
                                         @csrf
                                         @method('DELETE')
