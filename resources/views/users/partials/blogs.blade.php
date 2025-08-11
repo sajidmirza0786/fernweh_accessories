@@ -22,12 +22,12 @@ $uBlogs = App\Models\Blog::where('status','Active')
             @foreach($uBlogs ?? '' as $uBlog)
             <div class="col-12 col-sm-6 col-lg-4 mb-4">
                <div class="card border-0 shadow-sm h-100 blog-card">
-                   <a href="{{ route('ourBlogs', $uBlog) }}">
+                   <a href="{{ route('blogsDetails', $uBlog) }}">
                        <img class="card-img-top" src="{{ \Storage::url($uBlog->image ?? '') }}" alt="{{ $uBlog->title ?? '' }}">
                    </a>
                    <div class="card-body">
                        <h5 class="card-title font-weight-bold">
-                           <a href="{{ route('ourBlogs', $uBlog) }}" class="text-dark">{{ $uBlog->name ?? '' }}</a>
+                           <a href="{{ route('blogsDetails', $uBlog) }}" class="text-dark">{{ $uBlog->name ?? '' }}</a>
                        </h5>
                        <p class="card-text text-muted small mb-3">
                            {{ str($uBlog->short_description)->limit(80) }}
@@ -37,7 +37,7 @@ $uBlogs = App\Models\Blog::where('status','Active')
                        <small class="text-muted">
                            {{ $uBlog->published_at->format('d M Y') }}
                        </small>
-                       <a href="{{ route('ourBlogs', $uBlog) }}" class="text-danger font-weight-bold d-flex align-items-center">
+                       <a href="{{ route('blogsDetails', $uBlog) }}" class="text-danger font-weight-bold d-flex align-items-center">
                            <span class="mr-1">Read More</span>
                            <i class="fas fa-arrow-right"></i>
                        </a>
