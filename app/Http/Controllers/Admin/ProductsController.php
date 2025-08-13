@@ -72,7 +72,7 @@ class ProductsController extends Controller
             'selling'  => ['required','numeric','lte:mrp'],
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,jfif|max:2048',
             'status' => 'required|string|in:Active,Inactive',
-            'description' => 'nullable|string',
+            'description' => 'nullable|string|max:255',
             'long_description' => 'nullable|string',
         ]);
 
@@ -137,7 +137,7 @@ class ProductsController extends Controller
             'selling'  => ['required','numeric','lte:mrp'],
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,jfif|max:2048',
             'status' => 'required|string|in:Active,Inactive',
-            'description' => 'nullable|string',
+            'description' => 'nullable|string|max:255',
             'long_description' => 'nullable|string',
         ]);
 
