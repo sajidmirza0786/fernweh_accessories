@@ -70,7 +70,7 @@ class ProductsController extends Controller
             'size' => 'nullable|string|max:255',
             'mrp'  => ['required','numeric','gte:selling'],
             'selling'  => ['required','numeric','lte:mrp'],
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,jfif|max:2048',
             'status' => 'required|string|in:Active,Inactive',
             'description' => 'nullable|string',
             'long_description' => 'nullable|string',
@@ -98,10 +98,7 @@ class ProductsController extends Controller
             return redirect()->route('admin.products.index')->with('success', 'Product created successfully.');
         } catch (\Exception $e) {
             DB::rollBack();
-            if (isset($imagePath)) {
-                Storage::disk('public')->delete($imagePath);
-            }
-            return redirect()->back()->withInput()->with('error', 'Failed to create product. Please try again.');
+            return redirect()->back()->withInput()->with('error', 'Failed to create product. Please try again.'. $e->getMessage());
         }
     }
 
@@ -138,7 +135,7 @@ class ProductsController extends Controller
             'size' => 'nullable|string|max:255',
             'mrp'  => ['required','numeric','gte:selling'],
             'selling'  => ['required','numeric','lte:mrp'],
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,jfif|max:2048',
             'status' => 'required|string|in:Active,Inactive',
             'description' => 'nullable|string',
             'long_description' => 'nullable|string',
