@@ -57,9 +57,9 @@ class BlogsController extends Controller
         $request->validate([
             'name' => 'required|string|max:100|unique:blogs,name',
             'title' => 'required|string|max:100',
-            'keywords' => 'nullable|string|max:155',
+            'keywords' => 'required|string|max:155',
             'description' => 'nullable|string|max:155',
-            'short_description' => 'nullable|string',
+            'short_description' => 'required|string|255',
             'content' => 'required|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'tag' => 'nullable|string',
@@ -117,9 +117,9 @@ class BlogsController extends Controller
         $request->validate([
             'name' => 'required|string|max:100|unique:blogs,name,' . $id,
             'title' => 'required|string|max:100',
-            'keywords' => 'nullable|string|max:155',
+            'keywords' => 'required|string|max:155',
             'description' => 'nullable|string|max:155',
-            'short_description' => 'nullable|string',
+            'short_description' => 'required|string|255',
             'content' => 'required|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'tag' => 'nullable|string',
