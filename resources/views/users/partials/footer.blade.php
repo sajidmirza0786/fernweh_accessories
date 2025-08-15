@@ -141,7 +141,7 @@ $uCategories = App\Models\Category::where('status','Active')->orderBy('name','as
                                 <div class="contact-details">
                                     <h6>Phone Numbers</h6>
                                     <p>
-                                        <a href="tel:+918048778770">+91-80487 78770</a><br>
+                                        {{-- <a href="tel:+918048778770">+91-80487 78770</a><br> --}}
                                         <a href="tel:+918506959914">+91-85069 59914</a>
                                     </p>
                                 </div>

@@ -27,7 +27,7 @@ $uBlogs = App\Models\Blog::where('status','Active')
                    </a>
                    <div class="card-body">
                        <h5 class="card-title font-weight-bold">
-                           <a href="{{ route('blogsDetails', $uBlog) }}" class="text-dark">{{ $uBlog->name ?? '' }}</a>
+                           <a href="{{ route('blogsDetails', $uBlog) }}" class="text-dark">{{  str($uBlog->name)->limit(60)?? '' }}</a>
                        </h5>
                        <p class="card-text text-muted small mb-3">
                            {{ str($uBlog->short_description)->limit(80) }}
