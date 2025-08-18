@@ -33,7 +33,7 @@
    </div>
 <!-- Banner Ends Here -->
 
-<div class="request-form">
+<div class="request-form" style="background: #dfdada!important;color: black;">
    <div class="container">
       <div class="row">
          <div class="col-md-8">
@@ -41,7 +41,7 @@
             <span>Royal Enterprises since 2000 is one of the most famous manufacturer, exporter and supplier of an extensive array of laptop bags, backpack bags, duffle bags and much more.</span>
          </div>
          <div class="col-md-4">
-            <a href="{{ route('contact') }}" class="border-button">Contact Us</a>
+            <a href="{{ route('contact') }}" class="border-button text-dark">Contact Us</a>
          </div>
       </div>
    </div>
