@@ -33,7 +33,7 @@
    </div>
 <!-- Banner Ends Here -->
 
-<div class="request-form" style="background: #dfdada!important;color: black;">
+<div class="request-form" style="background: #dfdada!important;color: black">
    <div class="container">
       <div class="row">
          <div class="col-md-8">
