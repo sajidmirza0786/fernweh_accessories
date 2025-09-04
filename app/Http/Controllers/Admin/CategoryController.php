@@ -93,7 +93,7 @@ class CategoryController extends Controller
                 Storage::disk('public')->delete($imagePath);
             }
 
-            return redirect()->back()->withInput()->with('error', 'Failed to create category. Please try again.');
+            return redirect()->back()->withInput()->with('error', 'Failed to create category. Please try again.'. $e->getMessage());
         }
     }
 
@@ -163,7 +163,7 @@ class CategoryController extends Controller
                 Storage::disk('public')->delete($newImagePath);
             }
 
-            return redirect()->back()->withInput()->with('error', 'Failed to update category. Please try again.');
+            return redirect()->back()->withInput()->with('error', 'Failed to update category. Please try again.'. $e->getMessage());
         }
     }
 
